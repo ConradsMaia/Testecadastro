@@ -1,4 +1,4 @@
-# cadastro teste
+# cadastro testes
 
 ## Project setup
 ```
