@@ -8,7 +8,7 @@
 
 <script>
 
-import HelloWorld from './components/BotãoH.vue'
+import HelloWorld from './components/BotaoH.vue'
 
 export default {
   name: 'botao',

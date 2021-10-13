@@ -1,6 +1,6 @@
 
 <template>
-    <button  :to="rota" @click="EnviaFormularioParaState" type="submit" class="btn "  >PRÓXIMO</button>
+    <button class="btn btn-primary" type="submit">Enviar</button>
 </template>
 <script>
 export default {

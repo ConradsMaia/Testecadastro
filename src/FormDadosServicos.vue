@@ -30,7 +30,7 @@
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-sm">R$</span>
   </div>
-  <input type="text range"   step="any" size="10" name="sonumero" value="" data-accept-comma="1"   class="form-control only-number" aria-label="Exemplo do tamanho do input" aria-describedby="inputGroup-sizing-sm" id="inlineFormInputGroupUsername2"  pattern="((^[3-9][0-9][,]{1,1}[0-9]{2}$)|(^[1-3][0-5][0-9][,]{1,1}[0-9]{2}$))" placeholder="Valor" maxlength="6" minlength="5"   required >
+  <input type="text range"   step="any" size="10" name="sonuinlimero" value="" data-accept-comma="1"   class="form-control only-number" aria-label="Exemplo do tamanho do input" aria-describedby="inputGroup-sizing-sm" id="neFormInputGroupUsername2"  pattern="((^[3-9][0-9][,]{1,1}[0-9]{2}$)|(^[1-3][0-5][0-9][,]{1,1}[0-9]{2}$))" placeholder="Valor" maxlength="6" minlength="5"   required >
   <div class="invalid-feedback">
         Error message
       </div>
@@ -56,11 +56,12 @@
 <div id="check3">
    
      <div class="form-group form-check" >
-    <input type="checkbox" class="form-check-input" id="exampleCheck3" onclick="mostraEsconder()" value="3p" >
+    <input type="checkbox" class="form-check-input" id="exampleCheck3" onclick="mostraEsconder()"  value="3p" >
     <label class="form-check-label" for="exampleCheck3"><p class="align1" >Cartão de credito</p></label>
     
        <div id="pack1_2">
         <label for="exampleInputx">Parcelamento em</label>
+        
         <div class="form-check form-check-inline">
           <input class="form-check-inputt" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1" required>
           <label class="form-check-label1" for="inlineRadio1"><p class="position">1x, sem juros</p></label>
@@ -89,7 +90,7 @@
           </div>
           <p id="valor">2 de 2</p>
         </div> 
-       <BotaoRota :rota="'revisao-dados'" class="btn" /> 
+       <BotaoRota :rota="'revisao-dados'" class="btn" id="btt"/> 
     </div>
 </div>    
 </template>
@@ -115,7 +116,7 @@ BotaoRota
 
         #img{
         background-size: 300px;
-        background-image: url(components/imagens/desktop-pagina-2.png);
+        background-image: url(./components/imagens/desktop-pagina-2.png);
         background-repeat: no-repeat;
         background-position: right;
         }
@@ -165,6 +166,7 @@ BotaoRota
        left: 75px;
        display: none;
      }
+     
      #pack1{
       width: 100% ;
       
@@ -232,6 +234,40 @@ BotaoRota
     left: 5px;
     margin-bottom : 0px;
 }
+ @media screen and (max-width:1309px){
+         #img{
+           background-image: none;
+         }
+       
+         .form-group{
+           font-size: 12px;
+          width: 100%;
+         }
+         #pack1_2{
+       position: relative;
+       padding-top: 8px;
+       line-height: 25px;
+       left: 75px;
+    
+       
+     }
+     
+        #btt{
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .progress{
+          width: 100%;
+        }
+        #valor{position: relative;
+          padding-left: 20px;
+          width: 30%;
+           font-family: comfortaa;
+            color: #483698;
+            font-size: 15px;
+            font-weight:bolder;
+        }
+ }
 </style>
 
 

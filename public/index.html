@@ -55,6 +55,18 @@
             background-color: #FFE766;
             
         }
+        @media screen and (max-width:1309px){
+          #formulario{
+            margin-left:10px;
+           margin-right: 10px;
+          }
+          #corpo{
+            margin-left: 5%;
+            width:90%;
+            border-radius: 40px;
+          }
+          
+        }
         
   </style>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -76,9 +88,10 @@
 
 <script>
     function mostraEsconder() {
-      if (document.getElementById('pack1_2').style.display == 'block'){
+      
+      if (document.getElementById('pack1_2').style.display == 'grid'){
       document.getElementById('pack1_2').style.display = 'none';
-      }else{document.getElementById('pack1_2').style.display = 'block'; }
+      }else{document.getElementById('pack1_2').style.display = 'grid'; }
     } 
   </script>
 

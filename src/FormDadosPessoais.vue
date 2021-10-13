@@ -24,14 +24,14 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputcel">Número do celular*</label>
-                <input type="tel" size="10" name="sonumero"  value=""  v-model="celular" class="form-control form-control-sm only-number" id="exampleInputCel" placeholder="Ex.: (00) 00000-0000" minlength="14"  pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}$" onkeyup="mascara" v-mask="'(##)#####-####'"  aria-describedby="inputGroupPrepend" required>
+                <input type="tel" size="10" name="sonumero"  value=""  v-model="celular" class="form-control form-control-sm only-number" id="exampleInputCel" placeholder="Ex.: (00) 00000-0000" minlength="14"  autocomplete="off" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}$" onkeyup="mascara" v-mask="'(##)#####-####'"  aria-describedby="inputGroupPrepend" required>
               <div class="invalid-feedback">
         Error message
       </div>
       
               </div>
               <div id="posição">
-              <div class="form-group ">
+              <div class="form-group " id="states">
                 <label for="inputEstado">Estado*</label>
                 <select id="estado" class="form-control form-control-sm" v-model="estado" onchange="buscaCidades(this.value)" required>
                   <option value="" selected data-default >Selecione</option>
@@ -44,7 +44,7 @@
       </div>
               </div>
     
-              <div class="form-group ">
+              <div class="form-group " id="City">
                 <label for="inputCidade">Cidade*</label>
                 <select id="cidade" class="form-control form-control-sm" v-model="Cidade" required>
                   <option value="" selected data-default >Selecione</option>
@@ -61,10 +61,11 @@
               <p id="valor">1 de 2</p>
             </div>
             {{ texto }}
-            <button @click="EnviaFormularioParaState">teste</button>
-            <BotaoRota :rota="'dados-servicos'" class="btn" /> 
+            
+            <BotaoRota id="btt" :rota="'dados-servicos'" class="btn" @click="EnviaFormularioParaState"  /> 
         </div>
         </div>
+        
     
 </template>
 
@@ -101,10 +102,26 @@ this.texto = this.$store.getters.lendoInformacao
 
 
         <style scoped>
-      
+        #City{
+          margin-left: 20px;
+        }
+        #exampleInputCpf,#exampleInputCel{
+          width: 70%;
+        }
+        #btt{
+          margin-bottom: 20px;
+        }
+         #valor{position: relative;
+          padding-left: 20px;
+          width: 30%;
+           font-family: comfortaa;
+            color: #483698;
+            font-size: 15px;
+            font-weight:bolder;
+        }
         #img{
         background-size: 300px;
-        background-image: url(components/imagens/desktop-pagina-1.png);
+        background-image: url(./components/imagens/desktop-pagina-1.png);
         background-repeat: no-repeat;
         background-position: right;
         }
@@ -128,7 +145,7 @@ this.texto = this.$store.getters.lendoInformacao
         }
         #posição{
         display: flex;
-        width: 47.4%;
+        width: 50%;
         
         }
         .progress{
@@ -136,16 +153,9 @@ this.texto = this.$store.getters.lendoInformacao
          margin-bottom: 17px;
         }
         #cidade{
-          margin-left: 15px;
+          margin-left: 0px;
         }
-        #valor{
-        line-height:19px;
-        margin-left: 30px;
-        color:#483698;
-        font-family: comfortaa;
-        font-size: 12px;
-        font-weight: 1000;
-        }
+        
         #flex{
         display: flex;
         }
@@ -171,7 +181,44 @@ this.texto = this.$store.getters.lendoInformacao
         }
       input, select{
         border-color: #483698;
-      }      
+      }    
+       @media screen and (max-width:1309px){
+         #img{
+           background-image: none;
+         }
+         .form-group{
+          font-size: 12px;
+          width: 100%;
+         
+         
+        
+        }
+        #posição{
+        display: flex;
+        justify-content:space-between;
+        text-align: left; 
+        justify-content: space-between;
+        width: 100%;
+        }
+        #City{
+          margin-left: 20px;
+        }
+        .progress{
+          width: 100%;
+        }
+        #valor{position: relative;
+          padding-left: 20px;
+          width: 30%;
+           font-family: comfortaa;
+            color: #483698;
+            font-size: 15px;
+            font-weight:bolder;
+        }
+        #btt{
+          width: 100%;
+          margin-bottom: 20px;
+        }
+       }
 </style>
 
 

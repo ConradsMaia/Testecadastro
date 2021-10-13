@@ -20,12 +20,12 @@
       
   </template>
 <script>
-// import BotaoRota from './components/BotaoRota';
+// import BotaoRota from '/components/BotaoRota';
 
 export default {
   name:'app',
   components: { 
-// BotaoRota
+ //BotaoRota
  },
   data (){
     return{
@@ -37,7 +37,8 @@ export default {
 }
 
 </script>
-        <style scoped>
+
+<style scoped>
       #fake{position: relative;
         top: 9px;
         font-size: 14px;
@@ -57,7 +58,7 @@ export default {
      
         #img{
         background-size: 300px;
-        background-image: url(./components/imagens/desktop-pagina-3.png);
+        background-image: url(/components/imagens/desktop-pagina-3.png);
         background-repeat: no-repeat;
         background-position: right;
         }
