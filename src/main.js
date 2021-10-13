@@ -6,7 +6,7 @@ import App from './App.vue'
 import bootstrap from './bootstrap'
 import VueMask from 'v-mask';
 
-import store from '/store';
+import store from './store';
 
 
 Vue.use(VueMask);
@@ -20,6 +20,3 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
-
-
-

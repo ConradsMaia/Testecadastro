@@ -5,6 +5,7 @@ import FormDadosPessoais from './FormDadosPessoais'
 import FormDadosServicos from './FormDadosServicos'
 import FormRevisaoDados from './RevisaoDados'
 
+
 Vue.use(VueRouter)
 const route = new VueRouter ({
   mode: 'history',
