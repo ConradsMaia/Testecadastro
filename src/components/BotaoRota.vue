@@ -1,16 +1,32 @@
 
 <template>
-    <button class="btn btn-primary" type="submit">Enviar</button>
+    <button
+    class="btn btn-primary"
+    @click="EnviaFormularioParaState">Enviar</button>
 </template>
 <script>
 export default {
     props: {
-    rota: {
-      type: String,
-      required: true,
-default: 'home'
+        rota: {
+            type: String,
+            required: true,
+            default: 'dados-pessoais'
+        },
+        dadosUsuario: {
+            type: Object,
+            required: true,
+            default:  () => ({ message: 'hello' })
+        },
     },
-}
+    methods: {
+    EnviaFormularioParaState() {
+        this.$store.dispatch('gravandoInfo', this.dadosUsuario)
+        console.log('EnviaFormularioParaState', this.$store.getters.lendoInformacao)
+        this.$router.push(this.rota)
+
+
+    }
+  }
 
 }
 </script>
@@ -27,7 +43,7 @@ color: white;
      .btn:hover{
          color: white;
      }
-     
+
         .btn{
         background-color: #483698;
         width: 50%;

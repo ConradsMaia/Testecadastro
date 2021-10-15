@@ -10,30 +10,30 @@
     </div>
             <div class="form-group">
               <label for="exampleInputname">Nome completo*</label>
-              <input type="text" id="validationCustomUsername" v-model="nome" class="form-control form-control-sm"   placeholder="Digite o nome completo" maxlength="48" minlength="3" autocomplete="off" aria-describedby="inputGroupPrepend" required>
+              <input type="text" id="validationCustomUsername" v-model="dadosPessoais.nome" class="form-control form-control-sm"   placeholder="Digite o nome completo" maxlength="48" minlength="3" autocomplete="off" aria-describedby="inputGroupPrepend" required>
             <div class="invalid-feedback">
         Error message
       </div>
             </div>
             <div class="form-group">
               <label for="exampleInputcpf">CPF*</label>
-              <input input type="text"  name="sonumero" v-model="cpf"  class="form-control form-control-sm only-number" id="exampleInputCpf"  placeholder="Digite um CPF"     pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"  autocomplete="off" v-mask="'###.###.###-##'"  required>
+              <input input type="text"  name="sonumero" v-model="dadosPessoais.cpf"  class="form-control form-control-sm only-number" id="exampleInputCpf"  placeholder="Digite um CPF"     pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"  autocomplete="off" v-mask="'###.###.###-##'"  required>
            <div class="invalid-feedback">
         Error message
       </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputcel">Número do celular*</label>
-                <input type="tel" size="10" name="sonumero"  value=""  v-model="celular" class="form-control form-control-sm only-number" id="exampleInputCel" placeholder="Ex.: (00) 00000-0000" minlength="14"  autocomplete="off" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}$" onkeyup="mascara" v-mask="'(##)#####-####'"  aria-describedby="inputGroupPrepend" required>
+                <input type="tel" size="10" name="sonumero"  value=""  v-model="dadosPessoais.celular" class="form-control form-control-sm only-number" id="exampleInputCel" placeholder="Ex.: (00) 00000-0000" minlength="14"  autocomplete="off" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}$" onkeyup="mascara" v-mask="'(##)#####-####'"  aria-describedby="inputGroupPrepend" required>
               <div class="invalid-feedback">
         Error message
       </div>
-      
+
               </div>
               <div id="posição">
               <div class="form-group " id="states">
                 <label for="inputEstado">Estado*</label>
-                <select id="estado" class="form-control form-control-sm" v-model="estado" onchange="buscaCidades(this.value)" required>
+                <select id="estado" class="form-control form-control-sm" v-model="dadosPessoais.estado" onchange="buscaCidades(this.value)" required>
                   <option value="" selected data-default >Selecione</option>
                   <option value="PR">Paraná</option>
                   <option value="RS">Rio Grande do Sul</option>
@@ -43,10 +43,10 @@
         Error message
       </div>
               </div>
-    
+
               <div class="form-group " id="City">
                 <label for="inputCidade">Cidade*</label>
-                <select id="cidade" class="form-control form-control-sm" v-model="Cidade" required>
+                <select id="cidade" class="form-control form-control-sm" v-model="dadosPessoais.cidade" required>
                   <option value="" selected data-default >Selecione</option>
                 </select>
                 <div class="invalid-feedback">
@@ -56,17 +56,14 @@
             </div>
             <div id="flex">
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <p id="valor">1 de 2</p>
             </div>
-            {{ texto }}
-            
-            <BotaoRota id="btt" :rota="'dados-servicos'" class="btn" @click="EnviaFormularioParaState"  /> 
-        </div>
-        </div>
-        
-    
+
+            <BotaoRota id="btt" :rota="proximaRota" class="btn" :dadosUsuario="dadosPessoais"  />
+      </div>
+    </div>
 </template>
 
 <script>
@@ -74,28 +71,23 @@ import BotaoRota from './components/BotaoRota';
 
 export default {
   name:'app',
-  components: { 
+  components: {
 BotaoRota
  },
-  data (){
-    return{
+  data: () => ({
       texto:"",
-    texto1:"", nome:"",cpf:"",celular:"",estado:"",cidade:""
-}
+      texto1:"",
+      proximaRota: 'dados-servicos',
+      dadosPessoais: {
+        nome:"",
+        cpf:"",
+        celular:"",
+        estado:"",
+        cidade:""
 
-},methods: {
-EnviaFormularioParaState() {
-this.$store.dispatch('gravandoInfo', {
-nome: this.nome,
-cpf: this.cpf,
-celular: this.celular,
-estado: this.estado,
-cidade: this.cidade
-})
-console.log(this.$store.getters.lendoInformacao)
-this.texto = this.$store.getters.lendoInformacao
-}
-}
+    }
+  }),
+
 }
 
 </script>
@@ -146,7 +138,7 @@ this.texto = this.$store.getters.lendoInformacao
         #posição{
         display: flex;
         width: 50%;
-        
+
         }
         .progress{
           width: 35%;
@@ -155,7 +147,7 @@ this.texto = this.$store.getters.lendoInformacao
         #cidade{
           margin-left: 0px;
         }
-        
+
         #flex{
         display: flex;
         }
@@ -181,7 +173,7 @@ this.texto = this.$store.getters.lendoInformacao
         }
       input, select{
         border-color: #483698;
-      }    
+      }
        @media screen and (max-width:1309px){
          #img{
            background-image: none;
@@ -189,14 +181,14 @@ this.texto = this.$store.getters.lendoInformacao
          .form-group{
           font-size: 12px;
           width: 100%;
-         
-         
-        
+
+
+
         }
         #posição{
         display: flex;
         justify-content:space-between;
-        text-align: left; 
+        text-align: left;
         justify-content: space-between;
         width: 100%;
         }

@@ -3,36 +3,54 @@
   <div id="tudo">
     <div id="img">
           <div id="titulo">
-              <p class="text">Revisão do cadastro</p>
-    <p class="text">Revisão do cadastro</p>
-  <p class="dados">Nome completo</p>
-  <p class="dados">CPF</p>
-  <p class="dados">Número do celular ou telefone</p>
-  <p class="dados">Estado/Cidade</p>
-  <p class="dados">Especialidade principal</p>
-  <p class="dados">Preço da consulta</p>
-  <p class="dados">Formas de pagamento da consulta</p>
-          
-          <button id="botãoEdit"><p id="fake">Editar cadastro</p></button>
+              <ul>
+                <li v-for="(value, name) in mockFields"
+              :key="name"
+              class="text"> {{ name }} : <strong> {{ value }}</strong>
+              </li>
+              </ul>
+
+          <button id="botãoEdit" @click="VoltaParaPrimeiroForm"><p id="fake">Editar cadastro</p></button>
           </div>
-          </div>
-          </div>
-      
-  </template>
+        </div>
+    </div>
+
+</template>
 <script>
-// import BotaoRota from '/components/BotaoRota';
+
 
 export default {
   name:'app',
-  components: { 
+  components: {
  //BotaoRota
+ },
+ mounted() {
+   this.AtualizaInformacoesDoUsuario()
+ },
+ methods: {
+   AtualizaInformacoesDoUsuario (){
+     let payload = this.$store.getters.lendoInformacao
+     Object.assign(this.mockFields, payload)
+   },
+   VoltaParaPrimeiroForm(){
+     this.$router.push('dados-pessoais')
+   }
  },
   data (){
     return{
+      mockFields: {
+        nome: "",
+        cpf: "",
+        celular: "",
+        estado: "",
+        cidade: "",
+        parcela: '',
+        especialidade: '',
+        preco: ''
+      },
       texto:"",
         texto1:""
     }
-    
   }
 }
 
@@ -52,10 +70,10 @@ export default {
         border: none;
         background-color:transparent;
         margin-bottom: 50px;
-       
-      
+
+
         }
-     
+
         #img{
         background-size: 300px;
         background-image: url(/components/imagens/desktop-pagina-3.png);

@@ -5,16 +5,26 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-    dadosPessoais: []
+      dadosPessoais: {
+        nome: "",
+        cpf: "",
+        celular: "",
+        estado: "",
+        cidade: "",
+        parcela: '',
+        especialidade: '',
+        preco: ''
+      }
     },
     mutations: {
-        gravandoInfoNoState: (state, novoValor) => state.dadosPessoais = novoValor
+        gravandoInfoNoState: (state, novoValor) => {
+          Object.assign(state.dadosPessoais, novoValor)
+        }
     },
     actions: {
-        gravandoInfo ({commit}, payload) {
-        commit('gravandoInfoNoState', payload)
+        gravandoInfo ({ commit }, payload) {
+          commit('gravandoInfoNoState', payload)
       },
-      
     },
     getters: {
         lendoInformacao: ({ dadosPessoais }) => dadosPessoais,

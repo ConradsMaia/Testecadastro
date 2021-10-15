@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import FormDadosPessoais from './FormDadosPessoais'
 import FormDadosServicos from './FormDadosServicos'
 import FormRevisaoDados from './RevisaoDados'
+import Teste from './Teste'
 
 
 Vue.use(VueRouter)
@@ -16,6 +17,11 @@ const route = new VueRouter ({
         component: FormDadosPessoais
       },
       {
+        path: '/teste',
+        name: 'teste',
+        component: Teste
+      },
+      {
         path: '/dados-pessoais',
         name: 'dados-pessoais',
         component: FormDadosPessoais
@@ -23,19 +29,19 @@ const route = new VueRouter ({
       }
       ,
       {
-        
+
         path: '/dados-servicos',
-        name: 'dados-servicos',      
+        name: 'dados-servicos',
         component: FormDadosServicos
       },
       {
-        
+
         path: '/revisao-dados',
-        name: 'revisao-dados',      
+        name: 'revisao-dados',
         component: FormRevisaoDados
       }
     ]
   })
   export default route ;
-  
-  
+
+
