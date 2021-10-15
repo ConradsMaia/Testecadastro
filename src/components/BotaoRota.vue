@@ -2,6 +2,7 @@
 <template>
     <button
     class="btn btn-primary"
+    type="submit"
     @click="EnviaFormularioParaState">Enviar</button>
 </template>
 <script>
@@ -22,7 +23,7 @@ export default {
     EnviaFormularioParaState() {
         this.$store.dispatch('gravandoInfo', this.dadosUsuario)
         console.log('EnviaFormularioParaState', this.$store.getters.lendoInformacao)
-        this.$router.push(this.rota)
+        if(this.dadosUsuario.lenght() >0)this.$router.push(this.rota)
 
 
     }

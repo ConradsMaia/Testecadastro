@@ -74,6 +74,10 @@ export default {
   components: {
 BotaoRota
  },
+ mounted() {
+   let statePayload = this.$store.state.dadosPessoais
+   if(statePayload)Object.assign(statePayload,this.dadosPessoais )
+ },
   data: () => ({
       texto:"",
       texto1:"",

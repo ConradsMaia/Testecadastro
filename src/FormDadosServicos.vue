@@ -102,6 +102,11 @@ export default {
   components: {
 BotaoRota
  },
+ created(){
+   let statePayload = this.$store.state.dadosPessoais
+   console.log(statePayload)
+   if(statePayload)Object.assign(statePayload,this.dados )
+ },
   data (){
     return{
       texto:"",
